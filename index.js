@@ -1,45 +1,51 @@
-function register(callback) {
-    setTimeout(() => {
-        console.log("Registerd");
-        callback();
-    }, 2000)
-}
-function email(callback) {
-    setTimeout(() => {
-        console.log("email");
-        callback();
-    }, 2000);
-}
-function login(callback) {
-    setTimeout(() => {
-        console.log("login");
-        callback();
-    }, 2000);
+function register() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("Registerd");
+            resolve();
+        }, 2000)
+    })
 
 }
-function getuserdata(callback) {
-    setTimeout(() => {
-        console.log("getuserdata");
-        callback();
-    }, 3000);
+function email() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("email");
+            resolve();
+        }, 2000);
+    })
+
+}
+function login() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("login");
+            resolve();
+        }, 2000);
+    })
+
+
+}
+function getuserdata() {
+    return new Promise((resolve, reject)=>{
+        setTimeout(() => {
+            console.log("getuserdata");
+            resolve();
+        }, 3000);
+    })
+    
 
 }
 function displayuserdata() {
-    console.log("displayuserdata");
+    return new Promise((res, rej)=>{
+        setTimeout(()=>{
+            console.log("displayuserdata");
+            res();
+        },2000);
+    })
+    
 }
 
-register(() => {
-    email(() => {
-        login(() => {
-            getuserdata(function () {
-                displayuserdata();
-            });
-
-        });
-
-    })
-
-});
-
+register().then(email).then(login).then(getuserdata).then(displayuserdata);
 
 console.log("good work");
